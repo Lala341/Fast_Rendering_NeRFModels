@@ -18,24 +18,31 @@ In our project, we have embarked on a journey of exploration and experimentation
 
 ### Folder Structure
 
-NeRF
-EDP_NeRF
+**NeRF**
+
+**EDP_NeRF**
+
 In the ./NeRF/EDP_NeRF directory, we delve into the Extended Data Preparation (EDP) for NeRF. Here, we have the Edp_nerf_run.ipynb notebook, which serves as our virtual laboratory. Within this notebook, we experiment with different data preparation techniques, pushing the boundaries of data processing to enhance the capabilities of our NeRF models.
 
-Tiny_NeRF
+**Tiny_NeRF**
+
 The ./NeRF/Tiny_NeRF directory is our playground for working with smaller-scale NeRF models, often referred to as "Tiny NeRFs." In this realm, we are experimenting with a range of techniques to fine-tune these miniature models for specific use cases.
 
 BDRP_tiny_nerf_with_Visualization.ipynb takes us on a journey to understand how these tiny NeRFs can be used with various visualization techniques, allowing us to gain insights into the generated data.
+
 BDRP_tiny_nerf_pytorch.ipynb introduces us to the PyTorch framework for training and enhancing our tiny NeRF models.
 tiny_nerf.ipynb is where we continue to experiment with these compact NeRFs, pushing the boundaries of what they can achieve.
+
 tiny_nerf_data.npz houses the data used for training and testing these models, serving as the foundation for our exploratory work.
-Plenoctrees
+
+**Plenoctrees**
+
 The real-time rendering capabilities of the PlenOctree hold significant promise for our project. In the ./Plenoctrees directory, we explore its various implementations.
 
-nerf_sh
+**nerf_sh**
 In the ./Plenoctrees/nerf_sh subdirectory, we encounter one of the exciting NeRF variants. This specialized version introduces the use of spherical harmonics for representing radiance fields, promising to enhance the quality of our 3D reconstructions.
 
-octree
+**octree**
 The ./Plenoctrees/octree subdirectory is where we explore the inner workings of the PlenOctree, focusing on its octree data structure, pipeline optimizations, and real-time rendering capabilities. This exploration is pivotal to our mission of achieving real-time NeRF rendering in web browsers.
 
 Our directory structure not only organizes our exploration but also forms the foundation for the development of new tools and methodologies to advance our project. As we progress through these directories, we aim to harness the power of NeRF and PlenOctrees, pushing the boundaries of what can be achieved in 3D reconstruction and rendering.
