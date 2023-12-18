@@ -1,0 +1,41 @@
+Jax with GPU source: https://jax.readthedocs.io/en/latest/installation.html#pip-installation-google-cloud-tpu
+Install jax metal : https://developer.apple.com/forums/thread/731465
+(metal too it didnt work in M2) https://developer.apple.com/metal/jax/
+list of realeses of jax : https://storage.googleapis.com/jax-releases/jax_releases.html
+Source (Download files live): https://github.com/google-research/jax3d/issues/158
+
+ACCESS OUTPUTS STAGE 3 : https://storage.googleapis.com/jax3d-public/projects/mobilenerf/mobilenerf_viewer/chair_phone/mlp.json
+
+Replace optim by optax: https://flax.readthedocs.io/en/latest/guides/converting_and_upgrading/optax_update_guide.html
+Optax adam: https://optax.readthedocs.io/en/latest/api.html#optax.adam
+
+
+
+Source:  (Explanaition instances amazon) https://aws.amazon.com/ec2/instance-types/?ref_=beagle
+Source:  (Explanaition instances google) https://cloud.google.com/compute/gpus-pricing
+
+Source: (Execute notebook ml in amazon) https://kstathou.medium.com/how-to-set-up-a-gpu-instance-for-machine-learning-on-aws-b4fb8ba51a7c
+
+Connect to your instance
+Anaconda environments
+source activate pytorch_p36
+jupyter notebook --no-browser --port=8888
+(Copy token)
+
+New terminal
+ssh -i ec2-gpu-tutorial-key-pair.pem -L 5511:127.0.0.1:8888 ubuntu@###–##–###–###–###.##-####-#.compute.amazonaws.com
+open in google
+http://127.0.0.1:5511
+
+
+
+
+Source:(copy files to ec2)  https://medium.com/srcecde/copy-file-directory-to-from-ec2-using-scp-secure-copy-685c46636399
+
+#copy the directory from local machine to EC2 instance
+scp -i access.pem -r ~/Documents/directory1 ubuntu@0.0.0.0:/home/ubuntu/
+
+
+#copy the directory from EC2 instance to local machine
+scp -i access.pem -r ubuntu@0.0.0.0:/home/ubuntu/source_dir ~/Documents/directory1
+

@@ -1,0 +1,6 @@
+MobileNeRF/results/chair/weights/s*
+MobileNeRF/results/drums/weights/s*
+MobileNeRF/results/drumsStage2/weights/s*
+MobileNeRF/datasets
+MobileNeRF/datasets_drums
+*.pkl
