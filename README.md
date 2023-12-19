@@ -40,15 +40,17 @@ This repository is dedicated to the exploration and enhancement of 3D reconstruc
   - `config`: Configuration settings.
 
 ### `MobileNeRF`
-- `MobileNeRF M2-Mac`: MobileNeRF implementation optimized for M2-based MacBook Pro.
 - `datasets`: Datasets for model training and evaluation.
   - `nerf_synthetic`: Synthetic data for NeRF model training.
     - Specific scenes such as `chair`, `drums`, etc.
 - `results`: Model training results and associated data.
   - Specific subdirectories for different scenes (`drumsStage2`, `drums`, `chair`, etc.).
     - Subdirectories further organized by metrics, object files, weights, and samples.
+### `MobileNeRF M2-Mac` 
+- MobileNeRF implementation optimized for M2-based MacBook Pro.
 
 ### `MobileNeRF TPU-Colab-OPTAX`
+- MobileNeRF implementation optimized for TPU (Notebooks).
 - `datasets`: Datasets specific to TPU-Colab-OPTAX setup.
   - Subdirectories for weights, chair dataset, and samples.
 
