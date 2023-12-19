@@ -1,0 +1,70 @@
+.
+./utils
+./utils/metrics
+./utils/viewer
+./utils/viewer/nerf_synthetic
+./utils/viewer/nerf_synthetic/ficus_phone
+./utils/viewer/nerf_synthetic/drumsBDRP2_phone
+./utils/viewer/nerf_synthetic/ship_phone
+./utils/viewer/nerf_synthetic/drums_phone
+./utils/viewer/nerf_synthetic/materials_phone
+./utils/viewer/nerf_synthetic/drumsBDRP_phone
+./utils/viewer/nerf_synthetic/chairBDRP_phone
+./utils/viewer/nerf_synthetic/chair_phone
+./utils/viewer/nerf_synthetic/hotdog_phone
+./utils/viewer/nerf_synthetic/lego_phone
+./utils/viewer/nerf_synthetic/mic_phone
+./SmallNeRFs
+./SmallNeRFs/EDP_NeRF
+./SmallNeRFs/Tiny_NeRF
+./Plenoctrees
+./Plenoctrees/nerf_sh
+./Plenoctrees/nerf_sh/nerf
+./Plenoctrees/nerf_sh/config
+./Plenoctrees/nerf_sh/config/misc
+./Plenoctrees/octree
+./Plenoctrees/octree/nerf
+./Plenoctrees/octree/config
+./MobileNeRF
+./MobileNeRF/MobileNeRF M2-Mac
+./MobileNeRF/datasets
+./MobileNeRF/datasets/nerf_synthetic
+./MobileNeRF/datasets/nerf_synthetic/chair
+./MobileNeRF/datasets/nerf_synthetic/chair/test
+./MobileNeRF/datasets/nerf_synthetic/chair/train
+./MobileNeRF/datasets/nerf_synthetic/chair/val
+./MobileNeRF/results
+./MobileNeRF/results/drumsStage2
+./MobileNeRF/results/drumsStage2/metrics
+./MobileNeRF/results/drumsStage2/obj_
+./MobileNeRF/results/drumsStage2/weights
+./MobileNeRF/results/drumsStage2/samples
+./MobileNeRF/results/drumsStage2/obj__phone
+./MobileNeRF/results/drums
+./MobileNeRF/results/drums/metrics
+./MobileNeRF/results/drums/obj_
+./MobileNeRF/results/drums/weights
+./MobileNeRF/results/drums/samples
+./MobileNeRF/results/drums/obj__phone
+./MobileNeRF/results/chair
+./MobileNeRF/results/chair/metrics
+./MobileNeRF/results/chair/metrics3
+./MobileNeRF/results/chair/obj_
+./MobileNeRF/results/chair/weights
+./MobileNeRF/results/chair/samples
+./MobileNeRF/results/chair/obj__phone
+./MobileNeRF/MobileNeRF TPU-Colab-OPTAX
+./MobileNeRF/MobileNeRF TPU-Colab-OPTAX/datasets
+./MobileNeRF/MobileNeRF TPU-Colab-OPTAX/datasets/weights
+./MobileNeRF/MobileNeRF TPU-Colab-OPTAX/datasets/chair
+./MobileNeRF/MobileNeRF TPU-Colab-OPTAX/datasets/chair/test
+./MobileNeRF/MobileNeRF TPU-Colab-OPTAX/datasets/chair/train
+./MobileNeRF/MobileNeRF TPU-Colab-OPTAX/datasets/chair/val
+./MobileNeRF/MobileNeRF TPU-Colab-OPTAX/datasets/samples
+./MobileNeRF/datasets_drums
+./MobileNeRF/datasets_drums/nerf_synthetic
+./MobileNeRF/datasets_drums/nerf_synthetic/drums
+./MobileNeRF/datasets_drums/nerf_synthetic/drums/test
+./MobileNeRF/datasets_drums/nerf_synthetic/drums/train
+./MobileNeRF/datasets_drums/nerf_synthetic/drums/val
+./MobileNeRF/MobileNeRF GPU-OPTAX
