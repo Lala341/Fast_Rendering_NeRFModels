@@ -12,7 +12,7 @@ The viewer code is provided in this repo, as three .html files for three types o
 
 You can set up a local server on your machine, e.g.,
 ```
-cd nerf_synthetic
+cd nerf_models
 python -m http.server
 ```
 Then open
