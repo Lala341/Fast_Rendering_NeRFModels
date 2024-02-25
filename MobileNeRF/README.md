@@ -48,6 +48,11 @@ First, modify the parameters in all .py files:
 scene_type = "synthetic"
 object_name = "chair"
 scene_dir = "datasets/nerf_synthetic/"+object_name
+
+weights_dir = "results/"+ object_name+"/weights"
+samples_dir = "results/"+object_name+"/samples"
+metrics_dir = "results/"+object_name+"/metrics"
+
 ```
 *scene_type* can be synthetic, forwardfacing, or real360. *object_name* is the name of the scene to be trained; the available names are listed in the code. *scene_dir* is the folder holding the training data.
 
