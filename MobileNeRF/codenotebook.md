@@ -88,7 +88,7 @@ metrics_dir = "results/"+object_name+"/metrics"
 ```
 *scene_type* can be synthetic, forwardfacing, or real360. *object_name* is the name of the scene to be trained; the available names are listed in the code. *scene_dir* is the folder holding the training data.
 ```
-if poses_bound are not provided in dataset. Follow the steps in https://github.com/Fyusion/LLFF  to obtain poses.
+if poses_bound are not provided in dataset. Follow the steps in https://github.com/Fyusion/LLFF to obtain poses.
 ```
 Afterwards, run the three .py files consecutively
 ```
