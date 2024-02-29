@@ -1,6 +1,0 @@
-sphinx
-sphinx-rtd-theme
-sphinxcontrib-fulltoc
-recommonmark
-nerfvis
-numpy
