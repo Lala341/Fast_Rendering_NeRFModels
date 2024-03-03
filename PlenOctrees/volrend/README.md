@@ -28,3 +28,18 @@ Build the C++ project the same way the original authors had intended for WEB REN
 
 ## Changes
 
+Note that all changes can be found by looking up "#!" in the code.
+
+### web/index.html
+- move fps counter to the top right corner
+- add additional list elements for Used JS heap metric and loading time
+- add overall reset button
+
+### web/js/emModule.js
+- Update loading time and used heap in cppReportProgress()
+
+### web/js/guiComponents.js
+- Add overall reset button function for view direction shifting, sh decompose, slicing, backlight, octree grid
+
+### web/js/init.js
+- add startTime initialization
