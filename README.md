@@ -22,26 +22,26 @@ In our project, we have embarked on a journey of exploration and experimentation
 
 This repository is dedicated to the exploration and enhancement of 3D reconstruction using Neural Radiance Fields (NeRF). The conventional NeRF models face computational challenges, rendering them impractical for real-time applications. In response, this project focuses on the implementation and evaluation of two promising models, MobileNeRF and PlenOctree, which offer solutions for achieving real-time rendering.
 
-## Folder Structure Overview
+# Folder Structure Overview
 
-### `utils`
+## `utils`
 - `metrics`: Utility functions for evaluating model metrics.
 - `viewer`: Components related to the web-based viewer.
   - `nerf_synthetic`: Synthetic data for NeRF model evaluation.
     - Specific scenes such as `ficus_phone`, `drumsBDRP2_phone`, `ship_phone`, etc.
 
-### `SmallNeRFs`
+## `SmallNeRFs`
 - `EDP_NeRF`: Implementation of a Small NeRF variant.
 - `Tiny_NeRF`: Implementation of another Small NeRF variant.
 
-### `PlenOctrees`
+## `PlenOctrees`
 - `nerfvis`: PlenOctree visualization using Python. Based on the python library of the same name
 - `plenoctree`: PlenOctree implementation: NeRF-SH training and Octree building.
   - `nerf_sh`: Training and evaluation of the NeRF-SH model.
   - `octree`: Creation of the plenoctree from a NeRF model (NeRF-SH or JaxNeRF).
 - `volrend`: PlenOctree visualization using a C++ application (local and web available).
 
-### `MobileNeRF`
+## `MobileNeRF`
 - `datasets`: Datasets for model training and evaluation.
   - `nerf_synthetic`: Synthetic data for NeRF model training.
     - Specific scenes such as `chair`, `drums`, etc.
