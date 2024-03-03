@@ -45,6 +45,7 @@ This repository is dedicated to the exploration and enhancement of 3D reconstruc
 - `datasets`: Datasets for model training and evaluation.
   - `nerf_synthetic`: Synthetic data for NeRF model training.
     - Specific scenes such as `chair`, `drums`, etc.
+- `codenotebook.md`: Information about running in various environments and common errors.
 - `results`: Model training results and associated data.
   - Specific subdirectories for different scenes (`drumsStage2`, `drums`, `chair`, etc.).
     - Subdirectories further organized by metrics, object files, weights, and samples.
