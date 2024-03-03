@@ -135,7 +135,7 @@ flags.DEFINE_float(
 )
 flags.DEFINE_integer(
     "projection_samples",
-    5000, #! change from 10000 to 10 --> changed to 5000
+    5000, #! change from 10000
     "Number of rays to sample for SH projection.",
 )
 
@@ -333,9 +333,6 @@ def step1(args, tree, nerf, dataset):
     else:
         raise ValueError
     del sigmas
-
-    # print("*************************************** DEBUGGING mask", mask.cuda())
-    # print("*************************************** DEBUGGING grid", grid.cuda())
     
     grid = grid.cuda() #!move this up instead of after the print below
     grid = grid[mask.cuda()] # change mask to mask.cuda()
@@ -346,7 +343,7 @@ def step1(args, tree, nerf, dataset):
     print(' Building octree')
     for i in range(args.init_grid_depth - 1):
         tree[grid].refine()
-    refine_chunk = 1000000 #! should i change this? changed from 2000000 to 200 -> changed to 1000000
+    refine_chunk = 1000000 #! changed from 2000000 
     if grid.shape[0] <= refine_chunk:
         tree[grid].refine()
     else:

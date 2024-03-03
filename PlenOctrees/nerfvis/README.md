@@ -9,6 +9,8 @@ This code is created by [Alex Yu](https://github.com/sxyu) with contributions by
 
 **Original Documentation:** https://nerfvis.readthedocs.org
 
+**Original Repository:** https://github.com/sxyu/nerfvis/tree/master
+
 **Based on PlenOctrees** https://github.com/sxyu/plenoctrees
 
 PlenOctrees for Real Time Rendering of Neural Radiance Fields<br>

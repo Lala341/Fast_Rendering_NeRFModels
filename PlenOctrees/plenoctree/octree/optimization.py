@@ -81,7 +81,7 @@ flags.DEFINE_integer(
     'validation interval')
 flags.DEFINE_integer(
     'num_epochs',
-    40, #! change from 80 to 10 --> change to 40
+    40, #! change from 80
     'epochs to train for')
 flags.DEFINE_bool(
     'sgd',

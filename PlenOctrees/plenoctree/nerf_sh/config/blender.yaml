@@ -9,4 +9,4 @@ batch_size: 1024
 sh_deg: 3
 randomized: true
 max_steps: 1000000
-#! max_steps: 2000000 --> 200 --> 1000000
+#! original max_steps: 2000000 

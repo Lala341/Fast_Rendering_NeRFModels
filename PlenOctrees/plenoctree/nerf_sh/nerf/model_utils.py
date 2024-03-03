@@ -64,9 +64,7 @@ class MLP(nn.Module):
             nn.Dense, kernel_init=jax.nn.initializers.glorot_uniform()
         )
         inputs = x
-        
-        # print('********************************* DEBUGGING nn model_utils.py self', self)#!
-        
+                
         for i in range(self.net_depth):
             x = dense_layer(self.net_width)(x)
             x = self.net_activation(x)
