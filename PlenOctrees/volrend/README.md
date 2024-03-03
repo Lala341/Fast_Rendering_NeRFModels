@@ -24,7 +24,7 @@ https://alexyu.net/plenoctrees
 
 ## Setup
 
-Build the C++ project the same way the original authors had intended for WEB RENDERING. Please see (Volrend Github)[https://github.com/sxyu/volrend]
+Clone this repository and build the C++ project the same way the original authors had intended for WEB RENDERING. Please see (Volrend Github)[https://github.com/sxyu/volrend]
 
 ## Changes
 
