@@ -80,7 +80,7 @@ def main(unused_argv):
         ssims = []
         if not FLAGS.eval_once:
             showcase_index = np.random.randint(0, dataset.size)
-        for idx in range(dataset.size): #! added min just for testing purposes -- use only 10 test images min(dataset.size, 10) --> changed back to original
+        for idx in range(dataset.size):
             print(f"Evaluating {idx+1}/{dataset.size}")
             batch = next(dataset)
             if idx % FLAGS.approx_eval_skip != 0:

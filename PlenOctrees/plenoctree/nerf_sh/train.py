@@ -42,7 +42,6 @@ from nerf_sh.nerf import utils
 from nerf_sh.nerf.utils import host0_print as h0print
 
 import optax #! to replace flax.optim
-# from tqdm import tqdm #! new import for monitoring
 import gpustat #! to get statistics for GPU usage
 
 
@@ -123,57 +122,34 @@ def train_step(model, rng, state, batch, lr): #! replace arguments needed
 
     #! Extract information from state
     step = state.step
-    # print(step,"*********************** DEBUGGING state.optimizer")
-
-    # (_, stats), grad = jax.value_and_grad(loss_fn, has_aux=True)(state.optimizer.target) #! original
-    # current_params_state = flax.jax_utils.unreplicate(params_state) #! get current parameter state
-    
-    (_, stats), grad = jax.value_and_grad(loss_fn, has_aux=True)(state.variables) #! get gradients and stats using variables in trainclass #! since variables are now not enclosed in another dictionary 
+    (_, stats), grad = jax.value_and_grad(loss_fn, has_aux=True)(state.variables) #! get gradients and stats using variables in trainclass instead of state.optimizer.target
     
     grad = jax.lax.pmean(grad, axis_name="batch")
     stats = jax.lax.pmean(stats, axis_name="batch")
     
-    # #! Original
+    #! Original
     # new_optimizer = state.optimizer.apply_gradient(grad, learning_rate=lr)
     # new_state = state.replace(optimizer=new_optimizer)
     
-    # print('*************************************** DEBUGGING train.py check grad',grad)
-    # print('*************************************** DEBUGGING train.py check jax params',jax.tree_map(jnp.shape, state.variables))
-    # print('*************************************** DEBUGGING train.py state.opt_state -- check for params', state.opt_state)
-    
-    # #! Optax updates
-    # _, params = state.variables.pop('params') #! get params
+    #! Optax updates
     state.opt_state.hyperparams['learning_rate'] = lr
-    # new_optimizer = optax.inject_hyperparams(state.optimizer)(learning_rate=lr) #! update optimizer learning rate
     updates, new_opt_state =  state.optimizer.update(grad, state.opt_state) #! add params , flax.traverse_util.flatten_dict , params={'params':{'params':state.variables}}
     new_params = optax.apply_updates(state.variables, updates)
 
-    # #! make variables the same format as before
-    # new_variables = state.variables.copy({'params': new_params})
-    
     #! create new state
     new_state = state.replace(step=step + 1, 
                             variables=new_params, 
-                            opt_state=new_opt_state)#! maintain original but add also the change in parameters
+                            opt_state=new_opt_state) #! maintain original but add also the change in parameters
     
     return new_state, stats, rng
-    # return opt_state, stats, rng, new_params_state #! change state to opt_state and add params_state
     
-
-
 def main(unused_argv):
-    print('***********************************DEBUGGING 1 flags max_steps',f"/{FLAGS.max_steps:d}: ")
-    #! debugging
+    #! Check GPUs
     n_device = jax.local_device_count()
-    
     print(f"number of gpus: {n_device}")
     #! end edit here
     
-    #!
-    # List to store GPU memory consumption
-    # gpu_memory_consumption = []
-    
-    # Time taken for the entire training
+    #! Time taken for the entire training
     total_training_start= time.time()
     #! end edit here
     
@@ -182,7 +158,6 @@ def main(unused_argv):
     # hosts.
     np.random.seed(20201473 + jax.process_index()) #! host_id renamed to process_index()
     rng, key = random.split(rng)
-    print('***********************************DEBUGGING 2 CHECK ')
 
     utils.update_flags(FLAGS)
     utils.check_flags(FLAGS, require_batch_size_div=True)
@@ -205,7 +180,6 @@ def main(unused_argv):
     test_dataset = datasets.get_dataset("test", FLAGS)
 
     h0print('* Load model')
-    # print("********************** DEBUGGING train.py:", key, FLAGS)
     model, state = models.get_model_state(key, FLAGS) # change state to opt_state and add params_state -- revert to original
 
     learning_rate_fn = functools.partial(
@@ -248,18 +222,15 @@ def main(unused_argv):
     gc.disable()  # Disable automatic garbage collection for efficiency.
     stats_trace = []
 
-    # print("**************************** DEBUGGING NUMBER OF ITERATIONS",(init_step, FLAGS.max_steps + 1))
-
     steps=range(init_step, FLAGS.max_steps + 1) #! separate declaration to use it again
 
     reset_timer = True
-    for step, batch in zip(steps, pdataset): #! added tqdm and used steps variable , total=len(steps))
-        # print(f"****************** STEP {step} *********************")
+    for step, batch in zip(steps, pdataset): #! change steps
         if reset_timer:
             t_loop_start = time.time()
             reset_timer = False
         lr = learning_rate_fn(step)
-        state, stats, keys = train_pstep(keys, state, batch, lr) #! replaced state with opt_state, added param_state -- but reverted to original
+        state, stats, keys = train_pstep(keys, state, batch, lr) 
 
         if jax.process_index() == 0: #! host_id renamed to process_index()
             stats_trace.append(stats)
@@ -334,7 +305,7 @@ def main(unused_argv):
             h0print('\n* Rendering')
             t_eval_start = time.time()
             eval_variables = jax.device_get(
-                jax.tree_map(lambda x: x[0], state) #! replaced state with opt_state -- reverted back to original
+                jax.tree_map(lambda x: x[0], state)
             ).variables #! changed from optimizer.target to variables
             test_case = next(test_dataset)
             pred_color, pred_disp, pred_acc = utils.render_image(
@@ -415,15 +386,15 @@ def main(unused_argv):
                 
 
     if FLAGS.max_steps % FLAGS.save_every != 0:
-        state = jax.device_get(jax.tree_map(lambda x: x[0], state)) #! replaced state with opt_state -- reverted back to original
+        state = jax.device_get(jax.tree_map(lambda x: x[0], state))
         checkpoints.save_checkpoint(
-            FLAGS.train_dir, state, int(FLAGS.max_steps), keep=200  #! replaced state with opt_state -- reverted back to original
+            FLAGS.train_dir, state, int(FLAGS.max_steps), keep=200  
         )
     
     #! ending training time
     total_training_end= time.time()
     
-    # #! Save GPU memory consumption and total training time
+    #! Save GPU memory consumption and total training time
     # with open(FLAGS.train_dir+"/gpu_memory_consumption_training.txt", "w") as f:
     #     f.write(str(gpu_memory_consumption))
     with open(FLAGS.train_dir+"/total_training_time_training.txt", "a+") as f: #! changed from w to a+

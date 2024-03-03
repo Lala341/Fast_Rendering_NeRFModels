@@ -47,17 +47,50 @@ Note that all changes can be found by looking up "#!" in the code.
 
 ### NeRF-SH Training
 
-nerf/utils.py
+#### nerf/model_utils.py
+- TypeError: broadcast_to requires ndarray or scalar arguments, got <class 'list'> at position 0. -- change [1e10] to jnp.array(1e10) 
+```
+>>> # Original jnp.broadcast_to([1e10], z_vals[Ellipsis, :1].shape)
+>>> jnp.broadcast_to(jnp.array(1e10), z_vals[Ellipsis, :1].shape) # edited
+```
 
-train.py
+#### nerf/models.py
+- import optax
+- get_model_state(): use optax.adam instead of flax.optim.Adam and define the state using the newly defined TrainState
+
+#### nerf/utils.py
+- import optax and from typing import Any
+- Change TrainState to use optax. Instead of having the following arguments: [optimizer, target, opt_state] it became [step, variables, optimizer, opt_state] since the optimizer opbject of optax does not store states the same way as flax.optim.
+- Change rendering_every from 20,000 to 10,000 to see more statistics for exeperiments
+- save checkpoints more often. save_every 10,000 to 5,000
+- print more often from 1,000 to 500
+- garbage collect more often. gc_every from 5,000 to 2,500
+- change sparsity n_points from 10,000 to 5,000
+
+#### train.py
 - import optax and gpustat
 - flax.checkpoints is depreciated. Adapting code to orbax for future-proofing: added the following at the start of the code 
 ```
 >>> flax.config.update('flax_use_orbax_checkpointing', True)
 ``` 
-- replaced arguments in train_step to be compatible to the new definition of the TrainState
+- replaced arguments in train_step to be compatible to the new definition of the TrainState class
+- change how to extract information from the state in loss_fn()
+    - state.optimizer.target to state.variables
+    - step has to be manually extracted using state.step
+    - update learning rate separately by changing the hyperparameters in the opt_state in the saved state variable
+    - replace three variables (step, variables, opt_state) in the state instead of jsut the optimizer.
+- In main ():
+    - add code to check and print the number of GPUs detected in the system
+    - measure training time
+    - host_id renamed to process_index() due to depreciation warnings
+    - when opening txt files, change "a" to "a+" since there were times the error would show that the file is not in the directory
+    - add gpu_stats together with print_every and save in FLAGS.train_dir+"/gpu_memory_consumption_training.txt"
+    - to get eval_variables, changed from optimizer.target to variables
+    - change strings to print to variables to be able to store them in text files easier.
+    - save test evaluation in FLAGS.train_dir+"/summary_training.txt"
+    - save total training time in FLAGS.train_dir+"/total_training_time_training.txt"
 
-eval.py
+#### eval.py
 - flax.checkpoints is depreciated. Adapting code to orbax for future-proofing: added the following at the start of the code 
 ```
 >>> flax.config.update('flax_use_orbax_checkpointing', True)
@@ -69,4 +102,5 @@ eval.py
 - host_id renamed to process_index() due to depreciation warnings
 
 ### PlenOctree Conversion
-- 
+
+####  

@@ -40,20 +40,18 @@ from typing import Any #! import for defining variables in TrainState
 
 INTERNAL = False
 
-
+#! Original
 # @flax.struct.dataclass
 # class TrainState:
 #     optimizer: optax.GradientTransformation #! change from: flax.optim.Optimizer 
 #     target: flax.core.frozen_dict.FrozenDict #! added
 #     opt_state:optax.OptState #! added #! added
     
-#!! Test from https://github.com/rwightman/efficientnet-jax/blob/master/tf_linen_train.py
-# flax.struct.dataclass enables instances of this class to be passed into jax
-# transformations like tree_map and pmap.
+#!! Change TrainState to use optax
 @flax.struct.dataclass
 class TrainState:
     step: int
-    variables: optax.Params # flax.core.FrozenDict[str, Any]
+    variables: optax.Params
     optimizer: optax.GradientTransformation = flax.struct.field(pytree_node=False)
     opt_state: optax.OptState
 
@@ -190,7 +188,7 @@ def define_flags():
         1.0,
         "A multiplier on the learning rate when the step " "is < lr_delay_steps",
     )
-    flags.DEFINE_integer("max_steps", 500000, "the number of optimization steps.") #! Changed from 1000000 --> 100
+    flags.DEFINE_integer("max_steps", 1000000, "the number of optimization steps.")
     flags.DEFINE_integer(
         "save_every", 5000, "the number of steps to save a checkpoint." #! changed from 10000 --> 10
     )
@@ -199,7 +197,7 @@ def define_flags():
     )
     flags.DEFINE_integer(
         "render_every",
-        10000,#! change from 20000 --> 20
+        10000,#! change from 20000
         "the number of steps to render a test image,"
         "better to be x00 for accurate step time record.",
     )
@@ -223,7 +221,7 @@ def define_flags():
     )
     flags.DEFINE_integer(
         "sparsity_npoints",
-        5000, #! change from 10000 --> 100
+        5000, #! change from 10000
         "Number of samples for sparsity loss", 
     )
 

@@ -43,41 +43,27 @@ def get_model_state(key, args, restore=True):
     """
     model, variables = get_model(key, args)
     
-    # print("****************** DEBUGGING: variables in get_model_state", variables)
-    
     # #! Original version using flax.optim
     # optimizer = flax.optim.Adam(args.lr_init).create(variables) 
     # state = utils.TrainState(optimizer=optimizer)
-    
-    # #! get parameter states 
-    #! params_state = flax.jax_utils.replicate(variables)
-    
+        
     # #! New version using optax
     optimizer = optax.inject_hyperparams(optax.adam)(learning_rate=args.lr_init)
     opt_state = optimizer.init(variables) #!['params']
 
-    # print('******************** DEBUGGING init variables params', variables['params'].keys())
-
     #! define state using newly defined TrainState
-    #!! Test https://github.com/rwightman/efficientnet-jax/blob/master/tf_linen_train.py
     state = utils.TrainState(
             step=0,
-            variables=variables,#['params'],
+            variables=variables,
             optimizer=optimizer,
             opt_state=opt_state
             )
-            
 
     if restore:
         from flax.training import checkpoints
-        state = checkpoints.restore_checkpoint(args.train_dir, state) #! 
-        print('******************** Restoring checkpoint ********************')
-        
-    # print("********************* DEBUGGING get model state -- done", state)
-    # print("********************* DEBUGGING get model state -- done", state.opt_state)
+        state = checkpoints.restore_checkpoint(args.train_dir, state) 
 
-        
-    return model, state #opt_state, params_state #! change state to opt_state
+    return model, state 
 
 
 class NerfModel(nn.Module):
@@ -275,8 +261,6 @@ class NerfModel(nn.Module):
             self.legacy_posenc_order,
         )
         
-        # print('********************************* DEBUGGING models.py nerf model self', self)#!
-
         # Point attribute predictions
         if self.use_viewdirs:
             viewdirs_enc = model_utils.posenc(
