@@ -27,7 +27,7 @@ https://alexyu.net/plenoctrees
 
 ## Usage
 
-Please see  [Rendering Jupyter Notebook](PlenOctrees/rendering.ipynb) for a guide on the usage of this module.
+Please see [Rendering Jupyter Notebook](PlenOctrees/rendering.ipynb) for a guide on the usage of this module.
 
 Since there are changes in the original index.html file, this repository must first be cloned. Then install requirements.txt.
 
