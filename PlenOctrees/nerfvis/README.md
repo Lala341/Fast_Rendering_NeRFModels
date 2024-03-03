@@ -15,7 +15,9 @@ This code is created by [Alex Yu](https://github.com/sxyu) with contributions by
 
 Please see  [Rendering Jupyter Notebook](PlenOctrees/rendering.ipynb) for a guide on the usage of this module.
 
-Since there are changes in the original index.html file, this repository must first be cloned. Then the module can be imported and used as:
+Since there are changes in the original index.html file, this repository must first be cloned. Then install requirements.txt.
+
+The module can be imported and used as:
 ```
 >>> from nerfvis.nerfvis import scene # assuming you are executing this outside the cloned nerfvis repository
 >>> scene.set_title(scene_title)
