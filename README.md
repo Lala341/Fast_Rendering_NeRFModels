@@ -34,10 +34,12 @@ This repository is dedicated to the exploration and enhancement of 3D reconstruc
 - `EDP_NeRF`: Implementation of a Small NeRF variant.
 - `Tiny_NeRF`: Implementation of another Small NeRF variant.
 
-### `Plenoctrees`
-- `nerf_sh`: PlenOctree implementation.
-  - `nerf`: Core implementation.
-  - `config`: Configuration settings.
+### `PlenOctrees`
+- `nerfvis`: PlenOctree visualization using Python. Based on the python library of the same name
+- `plenoctree`: PlenOctree implementation: NeRF-SH training and Octree building.
+  - `nerf_sh`: Training and evaluation of the NeRF-SH model.
+  - `octree`: Creation of the plenoctree from a NeRF model (NeRF-SH or JaxNeRF).
+- `volrend`: PlenOctree visualization using a C++ application (local and web available).
 
 ### `MobileNeRF`
 - `datasets`: Datasets for model training and evaluation.
