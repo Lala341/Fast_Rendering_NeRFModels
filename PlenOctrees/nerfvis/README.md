@@ -8,6 +8,7 @@ This repository contains the source code for the nerfvis library: In-browser 3D 
 This code is created by [Alex Yu](https://github.com/sxyu) with contributions by [Hang Gao](https://github.com/hangg7) .
 
 **Original Documentation:** https://nerfvis.readthedocs.org
+
 **Based on PlenOctrees** https://github.com/sxyu/plenoctrees
 
 ## Usage
