@@ -11,6 +11,20 @@ This code is created by [Alex Yu](https://github.com/sxyu) with contributions by
 
 **Based on PlenOctrees** https://github.com/sxyu/plenoctrees
 
+PlenOctrees for Real Time Rendering of Neural Radiance Fields<br>
+Alex Yu, Ruilong Li, Matthew Tancik, Hao Li, Ren Ng, Angjoo Kanazawa
+
+https://alexyu.net/plenoctrees
+
+```
+@inproceedings{yu2021plenoctrees,
+      title={{PlenOctrees} for Real-time Rendering of Neural Radiance Fields},
+      author={Alex Yu and Ruilong Li and Matthew Tancik and Hao Li and Ren Ng and Angjoo Kanazawa},
+      year={2021},
+      booktitle={ICCV},
+}
+```
+
 ## Usage
 
 Please see  [Rendering Jupyter Notebook](PlenOctrees/rendering.ipynb) for a guide on the usage of this module.

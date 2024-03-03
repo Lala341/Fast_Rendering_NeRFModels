@@ -1,7 +1,10 @@
-# PlenOctrees Official Repo: NeRF-SH training and conversion
+# PlenOctrees: NeRF-SH training and conversion
 
-This repository contains code to train NeRF-SH and
-to extract the PlenOctree, constituting part of the code release for:
+This repository contains code to train a NeRF-SH model and to extract the PlenOctree. 
+
+This code is created by [Alex Yu](https://github.com/sxyu) and [Ruilong Li](https://github.com/liruilong940607).
+
+**Based on PlenOctrees** https://github.com/sxyu/plenoctrees
 
 PlenOctrees for Real Time Rendering of Neural Radiance Fields<br>
 Alex Yu, Ruilong Li, Matthew Tancik, Hao Li, Ren Ng, Angjoo Kanazawa
@@ -16,9 +19,6 @@ https://alexyu.net/plenoctrees
       booktitle={ICCV},
 }
 ```
-
-Please see the following repository for our C++ PlenOctrees volume renderer:
-<https://github.com/sxyu/volrend>
 
 ## Setup
 
